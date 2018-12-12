@@ -5,8 +5,10 @@ import registerServiceWorker from './registerServiceWorker';
 import 'typeface-roboto';
 import App from './App';
 import store from './store';
-import './index.css';
 import ErrorBoundary from './components/errorBoundary';
+
+import './index.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 render(
     <Provider store={store}>
