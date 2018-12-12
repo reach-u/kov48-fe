@@ -10,6 +10,7 @@ class App extends Component {
   render() {
     return (
         <Router history={history}>
+          <div>
             <Loader />
       <div className="App">
         <header className="App-header">
@@ -27,6 +28,7 @@ class App extends Component {
           </a>
         </header>
       </div>
+          </div>
         </Router>
     );
   }
