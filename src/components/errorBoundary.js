@@ -11,7 +11,7 @@ class ErrorBoundary extends Component {
 
   componentDidCatch() {
     this.setState({
-      hasError: true,
+      hasError: true
     });
   }
 
@@ -40,7 +40,7 @@ class ErrorBoundary extends Component {
 
 ErrorBoundary.propTypes = {
   children: PropTypes.element.isRequired,
-  classes: PropTypes.objectOf(PropTypes.string).isRequired,
+//  classes: PropTypes.objectOf(PropTypes.string).isRequired,
 };
 
 export default ErrorBoundary;
