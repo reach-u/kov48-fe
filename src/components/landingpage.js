@@ -8,7 +8,7 @@ class LandingPage extends Component {
 
   render() {
     return (
-      <main>main</main>
+      <div>main</div>
     )
   }
 }

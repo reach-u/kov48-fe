@@ -77,11 +77,6 @@ body {
   text-align: center;
   transition: 200ms;
 }
-.app > header:hover,
-.app > main:hover,
-.app > footer:hover {
-  box-shadow: 0 0 2rem gray;
-}
 .app > header {
   display: block;
   color: white;

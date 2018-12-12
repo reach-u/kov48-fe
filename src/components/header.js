@@ -1,4 +1,5 @@
 import React from 'react';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {
   Collapse,
   Navbar,
@@ -30,7 +31,7 @@ export default class Header extends React.Component {
     return (
       <header>
         <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">reactstrap</NavbarBrand>
+          <NavbarBrand href="/">KOV</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
@@ -50,7 +51,7 @@ export default class Header extends React.Component {
                   </DropdownItem>
                   <DropdownItem divider />
                   <DropdownItem>
-                    Reset
+                    Log out&nbsp;&nbsp;<FontAwesomeIcon icon="sign-out-alt" />
                   </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
