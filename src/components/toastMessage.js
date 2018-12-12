@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import Snackbar from '@material-ui/core/Snackbar';
 import ToastMessageContent from './toastMessage/content';
 import store from '../store';
 import {clearToast} from '../store/actions/toastMessage';
@@ -64,16 +63,14 @@ export class ToastMessage extends Component {
     } = this.state;
 
     return (
-      <Snackbar
+      <div
         key={key}
         style={{marginTop: '5px'}}
-        anchorOrigin={{vertical: 'top', horizontal: 'center'}}
-        autoHideDuration={10000}
         open={open}
         onClose={this.handleClose}
         onExited={this.handleExited}>
         <ToastMessageContent message={message} type={type} handleClose={this.handleClose} />
-      </Snackbar>
+      </div>
     );
   }
 }

@@ -2,16 +2,14 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import {Router} from "react-router";
-import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
 import history from './utils/history';
 import Loader from './components/loader';
-import config from "./config";
+
 
 class App extends Component {
   render() {
     return (
         <Router history={history}>
-          <MuiThemeProvider theme={config.theme}>
             <Loader />
       <div className="App">
         <header className="App-header">
@@ -29,7 +27,6 @@ class App extends Component {
           </a>
         </header>
       </div>
-          </MuiThemeProvider>
         </Router>
     );
   }

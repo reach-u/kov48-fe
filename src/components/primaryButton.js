@@ -1,26 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import withStyles from '@material-ui/core/styles/withStyles';
-import Button from '@material-ui/core/Button';
 
-const styles = theme => ({
-  button: {
-    margin: theme.spacing.unit * 2,
-    color: theme.palette.grey[50],
-  },
-});
 
-const PrimaryButton = ({onClick, children, classes, disabled}) => {
+
+const PrimaryButton = ({onClick, children, disabled}) => {
   return (
-    <Button
+    <input
       disabled={disabled}
       color="secondary"
       mini
       variant="contained"
-      className={classes.button}
       onClick={onClick}>
       {children}
-    </Button>
+    </input>
   );
 };
 
@@ -35,4 +27,4 @@ PrimaryButton.propTypes = {
   disabled: PropTypes.bool,
 };
 
-export default withStyles(styles)(PrimaryButton);
+export default PrimaryButton;
