@@ -43,7 +43,7 @@ class App extends Component {
         </div>
       </Router>
     ) : (
-      <div className="app">
+      <div className="app loginpage">
         <main>
           <ToastMessage />
           <LoginPage />

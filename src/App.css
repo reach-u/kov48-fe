@@ -54,6 +54,14 @@ body {
   margin: 0;
 }
 
+.app.loginpage {
+  background-image: url("./images/electronics_white.png");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: -30px -150px;
+}
 .app {
   #max-width: 100rem;
   width: 100%;
@@ -80,6 +88,12 @@ body {
   background: lightblue;
   text-transform: uppercase;
   padding: 1rem 2rem;
+  background-image: url("./images/electronics_white.png");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: -30px -150px;
 }
 .app > main {
   #flex: 1 1 auto;
