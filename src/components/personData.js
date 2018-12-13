@@ -37,10 +37,6 @@ const PersonData = ({label, person}) => {
         <div className="form-group col-md-6 text-align-right">Isikukood</div>
         <div className="form-group col-md-6 text-align-left">{person.idCode || ''}</div>
       </div>
-
-      <div className="form-row" style={{paddingTop: '35px'}}>
-        <label className="form-label">Isa andmed</label>
-      </div>
     </div>
   );
 };

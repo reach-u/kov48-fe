@@ -40,17 +40,17 @@ class Fatherhood extends Component {
       <div>
         <PersonData person={father} label="Isa andmed" />
         <PersonData person={child} label="Lapse andmed" />
-        <div className="form-group col-md-6">
-          <button className="btn btn-danger" onClick={this.cancelChild}>
-            Loobun
-          </button>
-        </div>
+          <div>
 
-        <div className="form-group col-md-6">
-          <button className="btn btn-success" onClick={this.confirmChild}>
-            Kinnitan
-          </button>
-        </div>
+                  <button className="btn btn-danger" onClick={this.cancelChild}>
+                      Loobun
+                  </button>
+
+                  <button className="btn btn-success" onClick={this.confirmChild}>
+                      Kinnitan
+                  </button>
+          </div>
+
       </div>
     );
   }
