@@ -7,29 +7,35 @@ import Footer from './components/footer';
 import LandingPage from './components/landingpage';
 import {library} from '@fortawesome/fontawesome-svg-core'
 import {faSignOutAlt} from '@fortawesome/free-solid-svg-icons'
+import connect from "react-redux/es/connect/connect";
+import LoginPage from "./views/login/loginPage";
 
 library.add(faSignOutAlt);
 
 class App extends Component {
 
-  constructor(props) {
-    super(props);
-  }
+
 
   render() {
+    const {userData} = this.props;
     return (
-      <Router history={history}>
+        <Router history={history}>
         <div className="app">
           <Header/>
           <main>
             <Route exact path='/' component={LandingPage}/>
-            <Route path="/view1" render={() => <div>view1</div>}/>
+            <Route path="/view1" render={() => userData ? <div>view1</div> : <LoginPage/>}/>
           </main>
           <Footer/>
         </div>
-      </Router>
+        </Router>
     );
   }
 }
 
-export default App;
+export default connect(
+    state => ({
+      userData: state.appUser.username,
+    }),
+    null
+)(App)

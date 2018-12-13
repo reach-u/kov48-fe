@@ -22,6 +22,7 @@
     "rc-calendar": "^9.7.0",
     "rc-time-picker": "^3.3.1",
     "react": "^16.4.1",
+    "react-bootstrap": "^0.32.4",
     "react-device-detect": "^1.6.1",
     "react-dom": "^16.4.1",
     "react-loadable": "^5.5.0",

@@ -2,10 +2,12 @@ import {applyMiddleware, combineReducers, compose, createStore} from 'redux';
 import thunk from 'redux-thunk';
 import toastMessage from './reducers/toastMessage';
 import appLoader from './reducers/appLoader';
+import appUser from './reducers/appUser';
 
 const rootReducer = combineReducers({
   toastMessage,
   appLoader,
+  appUser
 });
 
 /**
