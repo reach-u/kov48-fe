@@ -34,9 +34,27 @@ class LandingPage extends Component {
       }
     };
 
+    let getWarningMessage = (item) => {
+      switch (item) {
+        case "CONFIRM_FATHER":
+          return "Teil on kinnitamata lapse isa.";
+        case "SET_NAME":
+          return "Teil on võimalik lisada lapse nimi.";
+        default:
+          return "Teil on tegemata toiminguid.";
+      }
+    };
+
     return (
 
       <div className="form" style={{display: this.state.availableSteps.length > 0 ? "" : "none"}}>
+
+        <div className="form-row">
+          {this.state.availableSteps.map(asd =>
+            <div className="form-group col-md-12"><div className="alert alert-warning fade show">{getWarningMessage(asd)}</div></div>)}
+
+        </div>
+
         <Tabs defaultTab="tab-0" vertical>
           <TabList>
             {this.state.availableSteps.map((item, index) =>
