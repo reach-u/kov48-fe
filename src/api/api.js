@@ -20,7 +20,7 @@ const api = {
     let authToken = store.getState().apiKey;
 
     if (!!authToken) {
-      headers = {...headers, authToken};
+      headers = {...headers, ...authToken};
     }
 
     options = Object.assign(

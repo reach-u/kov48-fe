@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Button} from 'reactstrap';
 import LoginForm from './loginForm';
 import {login} from '../../store/actions/apiKey';
+import {fetchUserInfo} from '../../store/actions/appUser';
 import connect from 'react-redux/es/connect/connect';
 
 class LoginPage extends Component {
@@ -13,8 +14,9 @@ class LoginPage extends Component {
     this.setState({key});
   };
 
-  onSubmit = (code, phone) => {
-    this.props.login(code, phone);
+  onSubmit = async (code, phone) => {
+    await this.props.login(code, phone);
+    this.props.fetchUserInfo();
   };
 
   render() {
@@ -37,5 +39,5 @@ class LoginPage extends Component {
 }
 export default connect(
   null,
-  {login}
+  {login, fetchUserInfo}
 )(LoginPage);
