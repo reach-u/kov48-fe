@@ -38,8 +38,8 @@ class Fatherhood extends Component {
       <Redirect to="/" />
     ) : (
       <div>
-        <PersonData person={father} label="Isa andmed" />
-        <PersonData person={child} label="Lapse andmed" />
+        <PersonData person={father} label={<label>Isa andmed</label>}/>
+        <PersonData person={child} label={<label>Lapse andmed</label>} />
           <div>
 
                   <button className="btn btn-danger" onClick={this.cancelChild}>

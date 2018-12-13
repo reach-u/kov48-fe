@@ -2,9 +2,10 @@ import React from 'react';
 
 const PersonData = ({label, person}) => {
   return (
+      person ?
     <div>
       <div className="form-row">
-        <label className="form-label">{label}</label>
+          {label}
       </div>
       <hr className="featurette-divider" />
       <div className="form-row">
@@ -37,7 +38,7 @@ const PersonData = ({label, person}) => {
         <div className="form-group col-md-6 text-align-right">Isikukood</div>
         <div className="form-group col-md-6 text-align-left">{person.idCode || ''}</div>
       </div>
-    </div>
+    </div>:null
   );
 };
 
