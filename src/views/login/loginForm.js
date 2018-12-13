@@ -14,22 +14,38 @@ class LoginForm extends Component {
     const {hasPhoneField, onSubmit} = this.props;
     return (
       <Form>
-        <FormGroup>
-          <Label for="userCode">Kasutajatunnus</Label>
-          <Input name="userCode" id="userCode" onChange={e => this.handleChange(e)} />
-        </FormGroup>
-        {hasPhoneField && (
+        <span className="login-credentials-form">
           <FormGroup>
-            <Label for="phone">Telefoninumber</Label>
-            <Input name="phone" id="phone" onChange={e => this.handleChange(e)} />
-          </FormGroup>
-        )}
-        <Button
-          onClick={() => {
-            onSubmit(this.state.userCode, this.state.phone);
-          }}>
+          <label className="field a-field a-field_a2 page__field">
+            <input className="field__input a-field__input"
+                   name="userCode" id="userCode" onChange={e => this.handleChange(e)}
+                   placeholder=" " required/>
+            <span className="a-field__label-wrap">
+            <span className="a-field__label">Kasutajanimi</span>
+          </span>
+          </label>
+        </FormGroup>
+          {hasPhoneField && (
+            <FormGroup>
+              <label htmlFor="userCode" className="field a-field a-field_a2 page__field">
+                <input className="field__input a-field__input"
+                       name="phone" id="phone" onChange={e => this.handleChange(e)}
+                       placeholder=" " required/>
+                <span className="a-field__label-wrap">
+            <span className="a-field__label">Telefoni number</span>
+            </span>
+              </label>
+
+            </FormGroup>
+          )}
+          <Button
+            className="btn btn-outline-success"
+            onClick={() => {
+              onSubmit(this.state.userCode, this.state.phone);
+            }}>
           Sisene
         </Button>
+        </span>
       </Form>
     );
   }

@@ -8,6 +8,7 @@ import store from './store';
 import ErrorBoundary from './components/errorBoundary';
 
 import './index.css';
+import './Input.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 render(
