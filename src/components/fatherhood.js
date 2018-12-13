@@ -11,14 +11,12 @@ class Fatherhood extends Component {
     father: null
   };
 
-  componentDidMount() {
+  componentDidUpdate(a, b, c) {
     let fatherId = 5180000000;
-    //TODO get active user
     availableSteps.get(fatherId).then(function (data) {
       if (data.indexOf("CONFIRM_FATHER") > -1) {
-        //TODO get pending child
       } else {
-        window.location = "/";
+        window.location.href = "/";
       }
     });
   }
@@ -26,15 +24,16 @@ class Fatherhood extends Component {
   confirmChild() {
     let childId = 51800000000;
     confirmFather.get(childId).then(function () {
-      window.location = "/";
+      window.location.href = "/";
     });
   }
 
   cancelChild() {
-    window.location = "/";
+    window.location.href = "/";
   }
 
   render() {
+    console.log(this.props.userData);
     return (
       <div>
         <form className="form">
