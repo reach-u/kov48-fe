@@ -18,10 +18,11 @@ const api = {
       'Content-Type': 'application/json',
     };
 
-    let authToken = getAuthorizationToken();
+    let authToken = {apikey: getAuthorizationToken()};
+    console.log(authToken);
 
-    if (!!authToken) {
-      headers = {...headers, ...authToken};
+    if (!!authToken.apikey) {
+      headers = {...headers, apikey: authToken.apikey};
     }
 
     options = Object.assign(

@@ -2,19 +2,11 @@ let authorizationToken = null;
 const authorizationTokenName = 'userToken';
 
 export const getAuthorizationToken = () => {
-  return (
-    authorizationToken ||
-    getAuthorizationTokenFromCookie() ||
-    getAuthorizationTokenFromLocalStorage() ||
-    null
-  );
+  return authorizationToken || getAuthorizationTokenFromLocalStorage() || null;
 };
 
-export const setAuthorizationToken = (token, rememberMyLogin = true) => {
-  document.cookie = `${authorizationTokenName}=${authorizationToken}; path=/;`;
-  if (rememberMyLogin) {
-    localStorage.setItem(authorizationTokenName, authorizationToken);
-  }
+export const setAuthorizationToken = token => {
+  localStorage.setItem(authorizationTokenName, token);
 };
 
 export const unsetAuthorizationToken = () => {
@@ -26,15 +18,4 @@ export const unsetAuthorizationToken = () => {
 
 export const getAuthorizationTokenFromLocalStorage = () => {
   return localStorage.getItem(authorizationTokenName) || null;
-};
-
-const getAuthorizationTokenFromCookie = () => {
-  let token = null;
-  let tokenName = `${authorizationTokenName}=`;
-  document.cookie.split('; ').forEach(cookie_item => {
-    if (tokenName === cookie_item.substr(0, tokenName.length)) {
-      token = cookie_item.substr(tokenName.length) || null;
-    }
-  });
-  return token;
 };
