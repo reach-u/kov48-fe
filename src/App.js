@@ -9,7 +9,8 @@ import {library} from '@fortawesome/fontawesome-svg-core';
 import {faSignOutAlt, faChild, faMale} from '@fortawesome/free-solid-svg-icons';
 import connect from 'react-redux/es/connect/connect';
 import LoginPage from './views/login/loginPage';
-import Fatherhood from "./components/fatherhood";
+import Fatherhood from './components/fatherhood';
+import {getAuthorizationToken} from './components/authToken';
 
 library.add(faSignOutAlt);
 library.add(faChild);
@@ -17,14 +18,14 @@ library.add(faMale);
 
 class App extends Component {
   render() {
-    const {userData} = this.props;
-    return userData ? (
+    const authToken = getAuthorizationToken();
+    return authToken ? (
       <Router history={history}>
         <div className="app">
           <Header />
           <main>
             <Route exact path="/" component={LandingPage} />
-            <Route path="/view1" render={() => (userData ? <div>view1</div> : <LoginPage />)} />
+            <Route path="/view1" render={() => <div>view1</div>} />
             <Route path="/laps/isadus" component={Fatherhood} />
           </main>
           <Footer />

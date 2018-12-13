@@ -1,6 +1,7 @@
 import api from '../../api';
 import {setLoader} from './appLoader';
 import {setToastError} from './toastMessage';
+import {setAuthorizationToken} from '../../components/authToken';
 
 //feature
 export const KEY = '[Key]';
@@ -33,6 +34,7 @@ export const login = (code, phone) => {
       .login(code, phone)
       .then(response => {
         dispatch(setKey(response));
+        setAuthorizationToken(response.apiKey);
       })
       .catch(error => {
         dispatch(setToastError({message: error.message}, KEY));

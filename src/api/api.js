@@ -2,6 +2,7 @@ import store from '../store';
 import config from '../config';
 import {setToastError} from '../store/actions/toastMessage';
 import {isEmpty} from '../utils/programUtils';
+import {getAuthorizationToken} from '../components/authToken';
 
 const feature = '[Api]';
 const baseUrl = config.baseApiUrl;
@@ -17,7 +18,7 @@ const api = {
       'Content-Type': 'application/json',
     };
 
-    let authToken = store.getState().apiKey;
+    let authToken = getAuthorizationToken();
 
     if (!!authToken) {
       headers = {...headers, ...authToken};
@@ -28,7 +29,6 @@ const api = {
       {
         method: 'get',
         headers: headers,
-
       },
       options || {}
     );
