@@ -10,6 +10,7 @@ class Fatherhood extends Component {
   state = {
     returnToRoot: false,
   };
+
   componentDidMount() {
     this.props.fetchChildData();
   }
@@ -35,21 +36,21 @@ class Fatherhood extends Component {
     const {returnToRoot} = this.state;
 
     return returnToRoot ? (
-      <Redirect to="/" />
+      <Redirect to="/"/>
     ) : (
       <div>
         <PersonData person={father} label={<label>Isa andmed</label>}/>
-        <PersonData person={child} label={<label>Lapse andmed</label>} />
-          <div>
+        <PersonData person={child} label={<label>Lapse andmed</label>}/>
+        <div>
 
-                  <button className="btn btn-danger" onClick={this.cancelChild}>
-                      Loobun
-                  </button>
+          <button className="btn btn-danger" onClick={this.cancelChild}>
+            Loobun
+          </button>
 
-                  <button className="btn btn-success" onClick={this.confirmChild}>
-                      Kinnitan
-                  </button>
-          </div>
+          <button className="btn btn-success" onClick={this.confirmChild}>
+            Kinnitan
+          </button>
+        </div>
 
       </div>
     );

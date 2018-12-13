@@ -7,10 +7,10 @@ const BenefitsSelection = ({benefits, onChange}) => {
   return (
     <div>
       {sortedBenefits.map((benefit, ix) =>
-        <div key={ix}>
-          <span>{benefit.type}</span>
+        <div key={ix} className="form-row">
+          <div className="form-group col-md-6 text-align-right">{benefit.type}</div>
           {benefit.status === "Esitamata" ? <Slider name={benefit} onChange={onChange} checked={benefit.selected}/> :
-            <label>{benefit.status}</label>
+            <div className="form-group col-md-6 text-align-left">{benefit.status}</div>
           }
         </div>
       )}
