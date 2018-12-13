@@ -35,7 +35,7 @@ class App extends Component {
 
 export default connect(
     state => ({
-      userData: state.appUser.username,
+      userData: state.appUser.userData,
     }),
     null
 )(App)
