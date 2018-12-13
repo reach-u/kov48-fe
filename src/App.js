@@ -13,6 +13,7 @@ import Fatherhood from './components/fatherhood';
 import {getAuthorizationToken} from './components/authToken';
 import {fetchUserInfo} from './store/actions/appUser';
 import ToastMessage from './components/toastMessage';
+import BenefitsPage from './views/child/benefits';
 
 library.add(faSignOutAlt);
 library.add(faChild);
@@ -36,6 +37,7 @@ class App extends Component {
             <Route exact path="/" component={LandingPage} />
             <Route path="/view1" render={() => <div>view1</div>} />
             <Route path="/laps/isadus" component={Fatherhood} />
+            <Route path="/laps/toetused" component={BenefitsPage} />
           </main>
           <Footer />
         </div>
