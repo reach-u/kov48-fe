@@ -27,6 +27,8 @@ class LandingPage extends Component {
       switch (item) {
         case "CONFIRM_FATHER":
           return "Kinnita isadus";
+        case "SET_NAME":
+          return "Kinnita nimi";
         default:
           return "Tab " + index;
       }
@@ -44,6 +46,9 @@ class LandingPage extends Component {
             <TabPanel key={index} tabId={"tab-" + index}>
               <span style={{display: item === "CONFIRM_FATHER" ? "block" : "none"}}>
                 <Fatherhood/>
+              </span>
+              <span style={{display: item === "SET_NAME" ? "block" : "none"}}>
+                set name
               </span>
             </TabPanel>)}
         </Tabs>
