@@ -3,11 +3,13 @@ import thunk from 'redux-thunk';
 import toastMessage from './reducers/toastMessage';
 import appLoader from './reducers/appLoader';
 import appUser from './reducers/appUser';
+import apiKey from './reducers/apiKey';
 
 const rootReducer = combineReducers({
   toastMessage,
   appLoader,
   appUser,
+  apiKey,
 });
 
 /**

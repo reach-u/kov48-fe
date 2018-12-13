@@ -32,6 +32,7 @@ export const fetchUserInfo = (code, phone) => {
     await api.user
       .login(code, phone)
       .then(response => {
+        console.log(response);
         dispatch(setUser(response));
       })
       .catch(error => {

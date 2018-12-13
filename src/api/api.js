@@ -7,131 +7,140 @@ const feature = '[Api]';
 const baseUrl = config.baseApiUrl;
 
 const api = {
-    fetch: async function(url, options) {
-        if (baseUrl !== url.substr(0, baseUrl.length)) {
-            url = baseUrl + url;
-        }
-        options = Object.assign(
-            {},
-            {
-                method: 'get',
-                headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json',
-                },
-            },
-            options || {}
-        );
+  fetch: async function(url, options) {
+    if (baseUrl !== url.substr(0, baseUrl.length)) {
+      url = baseUrl + url;
+    }
 
-        options.method = options.method.toLowerCase();
+    let headers = {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    };
 
-        if (
-            options.headers['Content-Type'] === 'application/json' &&
-            (options.method === 'post' || options.method === 'put') &&
-            options.body !== undefined
-        ) {
-            options.body = JSON.stringify(options.body);
-        }
+    let authToken = store.getState().apiKey;
 
-        if (!window.location.origin) {
-            window.location.origin =
-                window.location.protocol +
-                '//' +
-                window.location.hostname +
-                (window.location.port ? ':' + window.location.port : '');
-        }
+    if (!!authToken) {
+      headers = {...headers, authToken};
+    }
 
-        let request = await fetch(`${window.location.origin}/${url}`, options);
-        let response = null;
-        let throwError = null;
-        try {
-            let contentType = request.headers.get('Content-Type');
-            if (contentType && contentType.indexOf('application/json') !== -1) {
-                response = await request.json();
-            } else {
-                response = await request.text();
-            }
-            switch (request.status) {
-                case 200:
-                    break;
-                case 502:
-                    store.dispatch(setToastError({message: 'Server offline'}, feature));
-                    throwError = {
-                        message: !response || isEmpty(response) ? null : response.toString(),
-                        status: request.status,
-                        statusText: request.statusText,
-                    };
-                    break;
-                case 401:
-                    store.dispatch(setToastError({message: 'Unauthorized'}, feature));
-                    throwError = {
-                        message: !response || isEmpty(response) ? null : response.toString(),
-                        status: request.status,
-                        statusText: request.statusText,
-                    };
-                    break;
-                case 400:
-                    store.dispatch(setToastError({message: response.message || 'Bad request'}, feature));
-                    throwError = {
-                        message: !response || isEmpty(response) ? null : response.toString(),
-                        status: request.status,
-                        statusText: request.statusText,
-                    };
-                    break;
-                default:
-                    throwError = {
-                        message: !response || isEmpty(response) ? null : response.toString(),
-                        status: request.status,
-                        statusText: request.statusText,
-                    };
-                    break;
-            }
-        } catch (error) {
-            throwError = error;
-        }
+    options = Object.assign(
+      {},
+      {
+        method: 'get',
+        headers: headers,
+      },
+      options || {}
+    );
 
-        if (throwError) {
-            if (typeof throwError === 'string') {
-                throwError = {message: throwError};
-            }
-            throw throwError;
-        }
+    options.method = options.method.toLowerCase();
 
-        return response;
-    },
+    if (
+      options.headers['Content-Type'] === 'application/json' &&
+      (options.method === 'post' || options.method === 'put') &&
+      options.body !== undefined
+    ) {
+      options.body = JSON.stringify(options.body);
+    }
 
-    get: function(url) {
-        return this.fetch(url, {method: 'get'});
-    },
+    if (!window.location.origin) {
+      window.location.origin =
+        window.location.protocol +
+        '//' +
+        window.location.hostname +
+        (window.location.port ? ':' + window.location.port : '');
+    }
 
-    post: function(url, data) {
-        return this.fetch(url, {method: 'post', body: data});
-    },
+    let request = await fetch(`${window.location.origin}/${url}`, options);
+    let response = null;
+    let throwError = null;
+    try {
+      let contentType = request.headers.get('Content-Type');
+      if (contentType && contentType.indexOf('application/json') !== -1) {
+        response = await request.json();
+      } else {
+        response = await request.text();
+      }
+      switch (request.status) {
+        case 200:
+          break;
+        case 502:
+          store.dispatch(setToastError({message: 'Server offline'}, feature));
+          throwError = {
+            message: !response || isEmpty(response) ? null : response.toString(),
+            status: request.status,
+            statusText: request.statusText,
+          };
+          break;
+        case 401:
+          store.dispatch(setToastError({message: 'Unauthorized'}, feature));
+          throwError = {
+            message: !response || isEmpty(response) ? null : response.toString(),
+            status: request.status,
+            statusText: request.statusText,
+          };
+          break;
+        case 400:
+          store.dispatch(setToastError({message: response.message || 'Bad request'}, feature));
+          throwError = {
+            message: !response || isEmpty(response) ? null : response.toString(),
+            status: request.status,
+            statusText: request.statusText,
+          };
+          break;
+        default:
+          throwError = {
+            message: !response || isEmpty(response) ? null : response.toString(),
+            status: request.status,
+            statusText: request.statusText,
+          };
+          break;
+      }
+    } catch (error) {
+      throwError = error;
+    }
 
-    put: function(url, data) {
-        return this.fetch(url, {method: 'put', body: data});
-    },
+    if (throwError) {
+      if (typeof throwError === 'string') {
+        throwError = {message: throwError};
+      }
+      throw throwError;
+    }
 
-    delete: function(url, data) {
-        return this.fetch(url, {method: 'delete', body: data});
-    },
+    return response;
+  },
 
-    upload: async function(url, file) {
-        if (baseUrl !== url.substr(0, baseUrl.length)) {
-            url = baseUrl + url;
-        }
-        let formData = new FormData();
-        formData.append('file', file);
-        let request = await fetch(`${window.location.origin}/${url}`, {
-            method: 'put',
-            body: formData,
-        });
-        let response = await request.json();
-        if (response.status !== 200) {
-            store.dispatch(setToastError({message: response.message}, feature));
-        }
-        return response;
-    },
+  get: function(url) {
+    return this.fetch(url, {method: 'get'});
+  },
+
+  post: function(url, data) {
+    return this.fetch(url, {method: 'post', body: data});
+  },
+
+  put: function(url, data) {
+    return this.fetch(url, {method: 'put', body: data});
+  },
+
+  delete: function(url, data) {
+    return this.fetch(url, {method: 'delete', body: data});
+  },
+
+  upload: async function(url, file) {
+    if (baseUrl !== url.substr(0, baseUrl.length)) {
+      url = baseUrl + url;
+    }
+    let formData = new FormData();
+    formData.append('file', file);
+    let request = await fetch(`${window.location.origin}/${url}`, {
+      method: 'put',
+      body: formData,
+    });
+    let response = await request.json();
+    if (response.status !== 200) {
+      store.dispatch(setToastError({message: response.message}, feature));
+    }
+    return response;
+  },
 };
 
 export default api;
