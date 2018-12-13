@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 
 import availableSteps from '../api/controllers/availableSteps';
 import confirmFather from '../api/controllers/confirmFather';
+import connect from "react-redux/es/connect/connect";
 
 class Fatherhood extends Component {
 
@@ -11,19 +12,26 @@ class Fatherhood extends Component {
   };
 
   componentDidMount() {
-    let childId = 51800000000;
     let fatherId = 5180000000;
-    let that = this;
+    //TODO get active user
     availableSteps.get(fatherId).then(function (data) {
       if (data.indexOf("CONFIRM_FATHER") > -1) {
-        confirmFather.get(childId).then(function (cf) {
-          that.setState({child: cf});
-          that.setState({father: cf.father});
-        });
+        //TODO get pending child
       } else {
         window.location = "/";
       }
     });
+  }
+
+  confirmChild() {
+    let childId = 51800000000;
+    confirmFather.get(childId).then(function () {
+      window.location = "/";
+    });
+  }
+
+  cancelChild() {
+    window.location = "/";
   }
 
   render() {
@@ -155,10 +163,10 @@ class Fatherhood extends Component {
 
           <div className="form-row">
             <div className="form-group col-md-6">
-              <button type="submit" className="btn btn-danger">Loobun</button>
+              <button type="submit" className="btn btn-danger" onClick={this.cancelChild}>Loobun</button>
             </div>
             <div className="form-group col-md-6">
-              <button type="submit" className="btn btn-success">Kinnitan</button>
+              <button type="submit" className="btn btn-success" onClick={this.confirmChild}>Kinnitan</button>
             </div>
           </div>
         </form>
@@ -168,4 +176,9 @@ class Fatherhood extends Component {
   }
 }
 
-export default Fatherhood;
+export default connect(
+  state => ({
+    userData: state.appUser.userData,
+  }),
+  null
+)(Fatherhood);
