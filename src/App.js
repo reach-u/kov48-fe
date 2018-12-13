@@ -12,6 +12,7 @@ import LoginPage from './views/login/loginPage';
 import Fatherhood from './components/fatherhood';
 import {getAuthorizationToken} from './components/authToken';
 import {fetchUserInfo} from './store/actions/appUser';
+import ToastMessage from './components/toastMessage';
 
 library.add(faSignOutAlt);
 library.add(faChild);
@@ -30,6 +31,7 @@ class App extends Component {
       <Router history={history}>
         <div className="app">
           <Header />
+          <ToastMessage />
           <main>
             <Route exact path="/" component={LandingPage} />
             <Route path="/view1" render={() => <div>view1</div>} />
@@ -41,6 +43,7 @@ class App extends Component {
     ) : (
       <div className="app">
         <main>
+          <ToastMessage />
           <LoginPage />
         </main>
       </div>

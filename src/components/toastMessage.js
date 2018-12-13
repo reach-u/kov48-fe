@@ -52,10 +52,6 @@ export class ToastMessage extends Component {
     }
   };
 
-  handleExited = () => {
-    this.processQueue();
-  };
-
   render() {
     const {
       messageObject: {key, message, type},
@@ -63,13 +59,13 @@ export class ToastMessage extends Component {
     } = this.state;
 
     return (
-      <div
-        key={key}
-        style={{marginTop: '5px'}}
-        open={open}
-        onClose={this.handleClose}
-        onExited={this.handleExited}>
-        <ToastMessageContent message={message} type={type} handleClose={this.handleClose} />
+      <div key={key} style={{marginTop: '5px'}} onClose={this.handleClose}>
+        <ToastMessageContent
+          message={message}
+          open={open}
+          type={type}
+          handleClose={this.handleClose}
+        />
       </div>
     );
   }

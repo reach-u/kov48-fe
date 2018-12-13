@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import connect from 'react-redux/es/connect/connect';
 import {fetchChildData} from '../store/actions/childData';
 import Redirect from 'react-router/es/Redirect';
-//import api from '../api';
+import api from '../api';
+import {setToastError, setToastSuccess} from '../store/actions/toastMessage';
 
 class Fatherhood extends Component {
   state = {
@@ -17,9 +18,15 @@ class Fatherhood extends Component {
   };
 
   confirmChild = () => {
-    console.log('sss');
-    // console.log(this.props.child.idCode);
-    //api.children.confirm(this.props.child.idCode);
+    api.children
+      .confirm(this.props.child.idCode)
+      .then(() => {
+        this.props.setToastSuccess({message: 'Isadus kinnitatud'}, 'Fatherhood');
+        this.setState({returnToRoot: true});
+      })
+      .catch(() => {
+        this.props.setToastError({message: 'Ootamatu viga'}, 'Fatherhood');
+      });
   };
 
   render() {
@@ -30,7 +37,7 @@ class Fatherhood extends Component {
       <Redirect to="/" />
     ) : (
       <div>
-        <form className="form">
+        <div className="form">
           <div className="form-row">
             <label className="form-label">Lapse andmed</label>
           </div>
@@ -120,7 +127,7 @@ class Fatherhood extends Component {
               </button>
             </div>
           </div>
-        </form>
+        </div>
       </div>
     );
   }
@@ -131,5 +138,5 @@ export default connect(
     userData: state.appUser.userData,
     child: state.childData.childData,
   }),
-  {fetchChildData}
+  {fetchChildData, setToastSuccess, setToastError}
 )(Fatherhood);
