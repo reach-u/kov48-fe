@@ -13,7 +13,7 @@ import Fatherhood from './components/fatherhood';
 import {getAuthorizationToken} from './components/authToken';
 import {fetchUserInfo} from './store/actions/appUser';
 import ToastMessage from './components/toastMessage';
-import BenefitsPage from './views/child/benefits';
+import BenefitsPage from './views/child/benefitsPage';
 
 library.add(faSignOutAlt);
 library.add(faChild);

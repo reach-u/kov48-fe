@@ -28,7 +28,6 @@ export const fetchBenefitsData = (id) => {
         dispatch(fetchBenefits());
         dispatch(setLoader(true, BENEFITS));
         await api.benefits.getAvailable(id)
-            .get()
             .then(response => {
                 dispatch(setBenefits(response));
             })
