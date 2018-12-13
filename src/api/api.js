@@ -19,7 +19,6 @@ const api = {
     };
 
     let authToken = {apikey: getAuthorizationToken()};
-    console.log(authToken);
 
     if (!!authToken.apikey) {
       headers = {...headers, apikey: authToken.apikey};

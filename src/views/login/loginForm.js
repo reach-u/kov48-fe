@@ -26,7 +26,7 @@ class LoginForm extends Component {
         )}
         <Button
           onClick={() => {
-            this.props.onSubmit(this.state.userCode, this.state.phone);
+            onSubmit(this.state.userCode, this.state.phone);
           }}>
           Sisene
         </Button>

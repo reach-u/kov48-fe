@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import connect from 'react-redux/es/connect/connect';
 import {fetchChildData} from '../store/actions/childData';
 import Redirect from 'react-router/es/Redirect';
+//import api from '../api';
 
 class Fatherhood extends Component {
   state = {
@@ -13,6 +14,12 @@ class Fatherhood extends Component {
 
   cancelChild = () => {
     this.setState({returnToRoot: true});
+  };
+
+  confirmChild = () => {
+    console.log('sss');
+    // console.log(this.props.child.idCode);
+    //api.children.confirm(this.props.child.idCode);
   };
 
   render() {
@@ -102,12 +109,13 @@ class Fatherhood extends Component {
           </div>
           <div className="form-row">
             <div className="form-group col-md-6">
-              <button type="submit" className="btn btn-danger" onClick={this.cancelChild}>
+              <button className="btn btn-danger" onClick={this.cancelChild}>
                 Loobun
               </button>
             </div>
+
             <div className="form-group col-md-6">
-              <button type="submit" className="btn btn-success" onClick={this.confirmChild}>
+              <button className="btn btn-success" onClick={this.confirmChild}>
                 Kinnitan
               </button>
             </div>
