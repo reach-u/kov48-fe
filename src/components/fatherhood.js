@@ -1,22 +1,20 @@
 import React, {Component} from 'react';
-
-//import availableSteps from '../api/controllers/availableSteps';
-//import confirmFather from '../api/controllers/confirmFather';
 import connect from 'react-redux/es/connect/connect';
-import PropTypes from 'prop-types';
-import ConfirmationModal from './confirmationModal';
+import {fetchChildData} from '../store/actions/childData';
 
 class Fatherhood extends Component {
   state = {
     child: null,
   };
 
-  confirmChild() {}
+  componentDidMount() {
+    this.props.fetchChildData();
+  }
 
   cancelChild() {}
 
   render() {
-    const {userData: father} = this.props;
+    const {userData: father, child} = this.props;
 
     return (
       <div>
@@ -27,45 +25,33 @@ class Fatherhood extends Component {
           <hr className="featurette-divider" />
           <div className="form-row">
             <div className="form-group col-md-6 text-align-right">Eesnimi</div>
-            <div className="form-group col-md-6 text-align-left">
-              {this.state.child && this.state.child.firstName ? this.state.child.firstName : ''}
-            </div>
+            <div className="form-group col-md-6 text-align-left">{child.firstName || ''}</div>
           </div>
           <div className="form-row">
             <div className="form-group col-md-6 text-align-right">Perekonnanimi</div>
-            <div className="form-group col-md-6 text-align-left">
-              {this.state.child && this.state.child.lastName ? this.state.child.lastName : ''}
-            </div>
+            <div className="form-group col-md-6 text-align-left">{child.lastName || ''}</div>
           </div>
           <div className="form-row">
             <div className="form-group col-md-6 text-align-right">Sugu</div>
-            <div className="form-group col-md-6 text-align-left">
-              {this.state.child && this.state.child.sex ? this.state.child.sex : ''}
-            </div>
+            <div className="form-group col-md-6 text-align-left">{child.sex || ''}</div>
           </div>
           <div className="form-row">
             <div className="form-group col-md-6 text-align-right">Sünniaeg</div>
-            <div className="form-group col-md-6 text-align-left">
-              {this.state.child && this.state.child.dateOfBirth ? this.state.child.dateOfBirth : ''}
-            </div>
+            <div className="form-group col-md-6 text-align-left">{child.dateOfBirth || ''}</div>
           </div>
           <div className="form-row">
             <div className="form-group col-md-6 text-align-right">Aadress</div>
             <div className="form-group col-md-6 text-align-left">
-              {this.state.child && this.state.child.address ? this.state.child.address : ''}
+              {child.address ? child.address.city : ''}
             </div>
           </div>
           <div className="form-row">
             <div className="form-group col-md-6 text-align-right">Sünnikoht</div>
-            <div className="form-group col-md-6 text-align-left">
-              {this.state.child && this.state.child.birthPlace ? this.state.child.birthPlace : ''}
-            </div>
+            <div className="form-group col-md-6 text-align-left">{child.birthPlace || ''}</div>
           </div>
           <div className="form-row">
             <div className="form-group col-md-6 text-align-right">Isikukood</div>
-            <div className="form-group col-md-6 text-align-left">
-              {this.state.child && this.state.child.idCode ? this.state.child.idCode : ''}
-            </div>
+            <div className="form-group col-md-6 text-align-left">{child.idCode || ''}</div>
           </div>
 
           <div className="form-row" style={{paddingTop: '35px'}}>
@@ -130,6 +116,7 @@ class Fatherhood extends Component {
 export default connect(
   state => ({
     userData: state.appUser.userData,
+    child: state.childData.childData,
   }),
-  null
+  {fetchChildData}
 )(Fatherhood);

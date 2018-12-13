@@ -13,7 +13,7 @@ import {
   DropdownMenu,
   DropdownItem,
 } from 'reactstrap';
-import connect from "react-redux/es/connect/connect";
+import connect from 'react-redux/es/connect/connect';
 
 class Header extends React.Component {
   constructor(props) {
@@ -43,7 +43,6 @@ class Header extends React.Component {
   }
 
   render() {
-
     return (
       <header>
         <Navbar color="light" light expand="md">
@@ -55,9 +54,14 @@ class Header extends React.Component {
                 <NavLink href="/view1/">View1</NavLink>
               </NavItem>
 
-              <UncontrolledDropdown nav inNavbar style={{display: !!this.props.userData ? "" : "none"}}>
+              <UncontrolledDropdown
+                nav
+                inNavbar
+                style={{display: !!this.props.userData ? '' : 'none'}}>
                 <DropdownToggle nav caret>
-                  {this.props.userData ? this.props.userData.firstName + " " + this.props.userData.lastName : ""}
+                  {this.props.userData
+                    ? this.props.userData.firstName + ' ' + this.props.userData.lastName
+                    : ''}
                 </DropdownToggle>
                 <DropdownMenu right>
                   <DropdownItem>Minu andmed</DropdownItem>

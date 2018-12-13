@@ -4,12 +4,14 @@ import toastMessage from './reducers/toastMessage';
 import appLoader from './reducers/appLoader';
 import appUser from './reducers/appUser';
 import apiKey from './reducers/apiKey';
+import childData from './reducers/childData';
 
 const rootReducer = combineReducers({
   toastMessage,
   appLoader,
   appUser,
   apiKey,
+  childData,
 });
 
 /**
