@@ -11,12 +11,19 @@ import connect from 'react-redux/es/connect/connect';
 import LoginPage from './views/login/loginPage';
 import Fatherhood from './components/fatherhood';
 import {getAuthorizationToken} from './components/authToken';
+import {fetchUserInfo} from './store/actions/appUser';
 
 library.add(faSignOutAlt);
 library.add(faChild);
 library.add(faMale);
 
 class App extends Component {
+  componentDidMount() {
+    if (getAuthorizationToken()) {
+      this.props.fetchUserInfo();
+    }
+  }
+
   render() {
     const authToken = getAuthorizationToken();
     return authToken ? (
@@ -45,5 +52,5 @@ export default connect(
   state => ({
     userData: state.appUser.userData,
   }),
-  null
+  {fetchUserInfo}
 )(App);
