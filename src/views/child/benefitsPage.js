@@ -7,13 +7,15 @@ import {Input} from "reactstrap";
 import {fetchBenefitsData} from "../../store/actions/benefitsAvailable";
 import BenefitsSelection from "./benefitsSelection";
 import api from '../../api';
+import {fetchStepsData} from "../../store/actions/availableSteps";
+
 
 class BenefitsPage extends Component {
 
-  state = {
-    benefits: [],
-    checked: false,
-  };
+    state = {
+        benefits:[],
+        checked:false,
+    };
 
   componentDidMount() {
     this.props.fetchChildData();
@@ -40,9 +42,9 @@ class BenefitsPage extends Component {
     this.setState({benefits: benefits});
   };
 
-  onSubmit = () => {
-    api.benefits.applyForSupport(this.props.child.idCode, this.state.benefits.filter(b => (b.selected === true && b.status == "Esitamata")))
-  };
+    onSubmit = () => {
+        api.benefits.applyForSupport(this.props.child.idCode, this.state.benefits.filter(b=>(b.selected===true && b.status=="Esitamata")))
+    };
 
   render() {
     const {father, child} = this.props;
@@ -114,10 +116,10 @@ class BenefitsPage extends Component {
 }
 
 export default connect(
-  state => ({
-    father: state.appUser.userData,
-    child: state.childData.childData,
-    benefits: state.benefits.benefits,
-  }),
-  {fetchBenefitsData, fetchChildData, setToastSuccess, setToastError}
+    state => ({
+        father: state.appUser.userData,
+        child: state.childData.childData,
+        benefits: state.benefits.benefits,
+    }),
+    {fetchBenefitsData, fetchChildData, setToastSuccess, setToastError}
 )(BenefitsPage);

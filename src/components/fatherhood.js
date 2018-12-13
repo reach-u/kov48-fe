@@ -5,6 +5,8 @@ import Redirect from 'react-router/es/Redirect';
 import api from '../api';
 import {setToastError, setToastSuccess} from '../store/actions/toastMessage';
 import PersonData from './personData';
+import {fetchStepsData} from "../store/actions/availableSteps";
+
 
 class Fatherhood extends Component {
   state = {
@@ -24,7 +26,8 @@ class Fatherhood extends Component {
       .confirm(this.props.child.idCode)
       .then(() => {
         this.props.setToastSuccess({message: 'Isadus kinnitatud'}, 'Fatherhood');
-        this.setState({returnToRoot: true});
+          this.props.fetchStepsData(51800000000);
+          this.setState({returnToRoot: true});
       })
       .catch(() => {
         this.props.setToastError({message: 'Ootamatu viga'}, 'Fatherhood');
@@ -62,5 +65,5 @@ export default connect(
     userData: state.appUser.userData,
     child: state.childData.childData,
   }),
-  {fetchChildData, setToastSuccess, setToastError}
+  {fetchChildData, setToastSuccess, setToastError, fetchStepsData}
 )(Fatherhood);
