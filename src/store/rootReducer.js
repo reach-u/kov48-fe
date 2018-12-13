@@ -7,7 +7,7 @@ import appUser from './reducers/appUser';
 const rootReducer = combineReducers({
   toastMessage,
   appLoader,
-  appUser
+  appUser,
 });
 
 /**

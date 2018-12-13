@@ -11,12 +11,12 @@ import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 render(
-    <Provider store={store}>
-        <ErrorBoundary>
-            <App />
-        </ErrorBoundary>
-    </Provider>,
-    document.getElementById('root')
+  <Provider store={store}>
+    <ErrorBoundary>
+      <App />
+    </ErrorBoundary>
+  </Provider>,
+  document.getElementById('root')
 );
 
 registerServiceWorker();
