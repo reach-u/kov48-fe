@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Button} from 'reactstrap';
 import LoginForm from './loginForm';
 import {fetchUserInfo} from '../../store/actions/appUser';
+import connect from 'react-redux/es/connect/connect';
 
 class LoginPage extends Component {
   state = {
@@ -13,7 +14,7 @@ class LoginPage extends Component {
   };
 
   onSubmit = () => {
-    fetchUserInfo();
+    this.props.fetchUserInfo(49200000000, 50123456);
   };
 
   render() {
@@ -34,4 +35,7 @@ class LoginPage extends Component {
     );
   }
 }
-export default LoginPage;
+export default connect(
+  null,
+  {fetchUserInfo}
+)(LoginPage);

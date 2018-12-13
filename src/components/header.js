@@ -1,5 +1,5 @@
 import React from 'react';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {
   Collapse,
   Navbar,
@@ -11,7 +11,8 @@ import {
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem } from 'reactstrap';
+  DropdownItem,
+} from 'reactstrap';
 
 export default class Header extends React.Component {
   constructor(props) {
@@ -19,12 +20,12 @@ export default class Header extends React.Component {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      isOpen: false
+      isOpen: false,
     };
   }
   toggle() {
     this.setState({
-      isOpen: !this.state.isOpen
+      isOpen: !this.state.isOpen,
     });
   }
   render() {
@@ -43,15 +44,12 @@ export default class Header extends React.Component {
                   Options
                 </DropdownToggle>
                 <DropdownMenu right>
-                  <DropdownItem>
-                    Option 1
-                  </DropdownItem>
-                  <DropdownItem>
-                    Option 2
-                  </DropdownItem>
+                  <DropdownItem>Option 1</DropdownItem>
+                  <DropdownItem>Option 2</DropdownItem>
                   <DropdownItem divider />
                   <DropdownItem>
-                    Log out&nbsp;&nbsp;<FontAwesomeIcon icon="sign-out-alt" />
+                    Log out&nbsp;&nbsp;
+                    <FontAwesomeIcon icon="sign-out-alt" />
                   </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>

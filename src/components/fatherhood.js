@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 
 class Fatherhood extends Component {
-
   render() {
     return (
       <div>
@@ -9,15 +8,15 @@ class Fatherhood extends Component {
           <div className="form-row">
             <label className="form-label">Lapse andmed</label>
           </div>
-          <hr className="featurette-divider"/>
+          <hr className="featurette-divider" />
           <div className="form-row">
             <div className="form-group col-md-6">
-              <input type="text" className="form-control" placeholder="Eesnimi"/>
+              <input type="text" className="form-control" placeholder="Eesnimi" />
             </div>
           </div>
           <div className="form-row">
             <div className="form-group col-md-6">
-              <input type="text" className="form-control" placeholder="Perekonnanimi"/>
+              <input type="text" className="form-control" placeholder="Perekonnanimi" />
             </div>
           </div>
           <div className="form-row">
@@ -30,12 +29,12 @@ class Fatherhood extends Component {
           </div>
           <div className="form-row">
             <div className="form-group col-md-6">
-              <input type="text" className="form-control" placeholder="Sünniaeg"/>
+              <input type="text" className="form-control" placeholder="Sünniaeg" />
             </div>
           </div>
           <div className="form-row">
             <div className="form-group col-md-6">
-              <input type="text" className="form-control" placeholder="Aadress"/>
+              <input type="text" className="form-control" placeholder="Aadress" />
             </div>
           </div>
           <div className="form-row">
@@ -48,24 +47,22 @@ class Fatherhood extends Component {
           </div>
           <div className="form-row">
             <div className="form-group col-md-6">
-              <input type="text" className="form-control" placeholder="Isikukood"/>
+              <input type="text" className="form-control" placeholder="Isikukood" />
             </div>
           </div>
 
-
-
-          <div className="form-row" style={{paddingTop:"35px"}}>
+          <div className="form-row" style={{paddingTop: '35px'}}>
             <label className="form-label">Isa andmed</label>
           </div>
-          <hr className="featurette-divider"/>
+          <hr className="featurette-divider" />
           <div className="form-row">
             <div className="form-group col-md-6">
-              <input type="text" className="form-control" placeholder="Eesnimi"/>
+              <input type="text" className="form-control" placeholder="Eesnimi" />
             </div>
           </div>
           <div className="form-row">
             <div className="form-group col-md-6">
-              <input type="text" className="form-control" placeholder="Perekonnanimi"/>
+              <input type="text" className="form-control" placeholder="Perekonnanimi" />
             </div>
           </div>
           <div className="form-row">
@@ -78,12 +75,12 @@ class Fatherhood extends Component {
           </div>
           <div className="form-row">
             <div className="form-group col-md-6">
-              <input type="text" className="form-control" placeholder="Sünniaeg"/>
+              <input type="text" className="form-control" placeholder="Sünniaeg" />
             </div>
           </div>
           <div className="form-row">
             <div className="form-group col-md-6">
-              <input type="text" className="form-control" placeholder="Aadress"/>
+              <input type="text" className="form-control" placeholder="Aadress" />
             </div>
           </div>
           <div className="form-row">
@@ -96,22 +93,25 @@ class Fatherhood extends Component {
           </div>
           <div className="form-row">
             <div className="form-group col-md-6">
-              <input type="text" className="form-control" placeholder="Isikukood"/>
+              <input type="text" className="form-control" placeholder="Isikukood" />
             </div>
           </div>
 
           <div className="form-row">
             <div className="form-group col-md-3">
-              <button type="submit" className="btn btn-danger">Loobun</button>
+              <button type="submit" className="btn btn-danger">
+                Loobun
+              </button>
             </div>
             <div className="form-group col-md-3">
-              <button type="submit" className="btn btn-success">Kinnitan</button>
+              <button type="submit" className="btn btn-success">
+                Kinnitan
+              </button>
             </div>
           </div>
         </form>
-
       </div>
-    )
+    );
   }
 }
 

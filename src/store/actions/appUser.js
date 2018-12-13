@@ -25,12 +25,12 @@ export const clearUser = () => ({
 const guest = {username: null};
 
 //thunks
-export const fetchUserInfo = () => {
+export const fetchUserInfo = (code, phone) => {
   return async dispatch => {
     dispatch(fetchUser());
     dispatch(setLoader(true, USER));
     await api.user
-      .getUserInfo()
+      .login(code, phone)
       .then(response => {
         dispatch(setUser(response));
       })
