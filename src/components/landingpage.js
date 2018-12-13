@@ -2,23 +2,14 @@ import React, {Component} from 'react';
 import {Tab, TabList, TabPanel, Tabs} from 'react-web-tabs';
 import Fatherhood from "./fatherhood";
 import 'react-web-tabs/dist/react-web-tabs.css';
-import api from "../api";
 import connect from "react-redux/es/connect/connect";
+import {fetchStepsData} from "../store/actions/availableSteps";
 
 class LandingPage extends Component {
 
-  state = {
-    availableSteps: [],
-  };
-
   componentDidMount() {
-    //let userData = this.props.userData;
-    //TODO replace hardcoded idcode
-    api.availableSteps
-      .get(51800000000)
-      .then(response => {
-        this.setState({availableSteps: response});
-      });
+    //TODO replace hardcoded idcode 51800000000
+    this.props.fetchStepsData(51800000000);
   }
 
   render() {
@@ -44,23 +35,25 @@ class LandingPage extends Component {
           return "Teil on tegemata toiminguid.";
       }
     };
+    const {steps} =this.props;
 
     return (
 
-      <div className="form" style={{display: this.state.availableSteps.length > 0 ? "" : "none"}}>
+
+      <div className="form" style={{display: steps.length > 0 ? "" : "none"}}>
 
         <div className="form-row">
-          {this.state.availableSteps.map(asd =>
+          {steps.map(asd =>
             <div className="form-group col-md-12"><div className="alert alert-warning fade show">{getWarningMessage(asd)}</div></div>)}
 
         </div>
 
         <Tabs defaultTab="tab-0" vertical>
           <TabList>
-            {this.state.availableSteps.map((item, index) =>
+            {steps.map((item, index) =>
               <Tab key={index} tabFor={"tab-" + index}>{getTranslation(item, index)}</Tab>)}
           </TabList>
-          {this.state.availableSteps.map((item, index) =>
+          {steps.map((item, index) =>
             <TabPanel key={index} tabId={"tab-" + index}>
               <span style={{display: item === "CONFIRM_FATHER" ? "block" : "none"}}>
                 <Fatherhood/>
@@ -77,7 +70,9 @@ class LandingPage extends Component {
 
 export default connect(
   state => ({
-    userData: state.appUser.userData
-  })
+    userData: state.appUser.userData,
+    steps: state.availableSteps.steps,
+  }),
+    {fetchStepsData}
 )(LandingPage);
 
