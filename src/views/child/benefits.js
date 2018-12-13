@@ -5,11 +5,18 @@ import Checkbox from 'react-bootstrap/es/Checkbox';
 import PersonData from "../../components/personData";
 import {setToastError, setToastSuccess} from "../../store/actions/toastMessage";
 import {Input} from "reactstrap";
+import {fetchBenefitsData} from "../../store/actions/benefitsAvailable";
 
 class BenefitsPage extends Component {
 
     componentDidMount() {
-        this.props.fetchChildData()
+        this.props.fetchChildData();
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (!prevProps.child.idCode && this.props.child.idCode){
+            this.props.fetchBenefitsData(this.props.child.idCode)
+        }
     }
 
     render() {
@@ -56,6 +63,7 @@ export default connect(
     state => ({
         father: state.appUser.userData,
         child: state.childData.childData,
+        benefits: state.benefits.benefits,
     }),
-    {fetchChildData, setToastSuccess, setToastError}
+    {fetchBenefitsData, fetchChildData, setToastSuccess, setToastError}
 )(BenefitsPage);
