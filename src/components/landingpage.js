@@ -52,8 +52,8 @@ class LandingPage extends Component {
       <div className="form" style={{display: steps.length > 0 ? "" : "none"}}>
 
         <div className="form-row">
-          {steps.map(asd =>
-            <div className="form-group col-md-12"><div className="alert alert-warning fade show">{getWarningMessage(asd)}</div></div>)}
+          {steps.map((item, index) =>
+            <div key={index} className="form-group col-md-12"><div className="alert alert-warning fade show">{getWarningMessage(item)}</div></div>)}
 
         </div>
 
