@@ -5,6 +5,7 @@ import appLoader from './reducers/appLoader';
 import appUser from './reducers/appUser';
 import apiKey from './reducers/apiKey';
 import childData from './reducers/childData';
+import benefits from './reducers/benefitsAvailable';
 
 const rootReducer = combineReducers({
   toastMessage,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   appUser,
   apiKey,
   childData,
+  benefits,
 });
 
 /**
