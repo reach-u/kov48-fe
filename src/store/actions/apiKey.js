@@ -34,6 +34,7 @@ export const login = (code, phone) => {
       .login(code, phone)
       .then(response => {
         dispatch(setKey(response));
+        console.log(response.apiKey);
         setAuthorizationToken(response.apiKey);
       })
       .catch(error => {
