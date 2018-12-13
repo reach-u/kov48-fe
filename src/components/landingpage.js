@@ -4,7 +4,7 @@ import Fatherhood from "./fatherhood";
 import 'react-web-tabs/dist/react-web-tabs.css';
 import connect from "react-redux/es/connect/connect";
 import {fetchStepsData} from "../store/actions/availableSteps";
-
+import BenefitsPage from '../views/child/benefitsPage';
 class LandingPage extends Component {
 
   componentDidMount() {

@@ -7,6 +7,8 @@ import {Input} from "reactstrap";
 import {fetchBenefitsData} from "../../store/actions/benefitsAvailable";
 import BenefitsSelection from "./benefitsSelection";
 import api from '../../api';
+import {fetchStepsData} from "../../store/actions/availableSteps";
+
 
 class BenefitsPage extends Component {
 
@@ -41,6 +43,8 @@ class BenefitsPage extends Component {
 
     onSubmit = () => {
         api.benefits.applyForSupport(this.props.child.idCode, this.state.benefits.filter(b=>(b.selected===true && b.status=="Esitamata")))
+            .then(this.props.fetchStepsData(51800000000))
+
     };
 
     render() {
@@ -92,5 +96,5 @@ export default connect(
         child: state.childData.childData,
         benefits: state.benefits.benefits,
     }),
-    {fetchBenefitsData, fetchChildData, setToastSuccess, setToastError}
+    {fetchBenefitsData, fetchChildData, setToastSuccess, setToastError, fetchStepsData}
 )(BenefitsPage);
