@@ -8,7 +8,7 @@ const initialState = {
 export default function appUser(state = initialState, action = {}) {
   switch (action.type) {
     case SET_USER: {
-      return action.payload;
+      return {userData: action.payload};
     }
     case CLEAR_USER:
     case RESET_ALL: {

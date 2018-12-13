@@ -32,7 +32,6 @@ export const fetchUserInfo = () => {
     await api.user
       .getuserInfo()
       .then(response => {
-        console.log(response);
         dispatch(setUser(response));
       })
       .catch(error => {

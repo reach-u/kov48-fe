@@ -15,17 +15,23 @@ library.add(faSignOutAlt);
 class App extends Component {
   render() {
     const {userData} = this.props;
-    return (
+    return userData ? (
       <Router history={history}>
         <div className="app">
           <Header />
           <main>
             <Route exact path="/" component={LandingPage} />
-            <Route path="/view1" render={() => (userData ? <div>view1</div> : <LoginPage />)} />
+            <Route path="/view1" render={() => <div>view1</div>} />
           </main>
           <Footer />
         </div>
       </Router>
+    ) : (
+      <div className="app">
+        <main>
+          <LoginPage />
+        </main>
+      </div>
     );
   }
 }
