@@ -9,6 +9,7 @@ import {library} from '@fortawesome/fontawesome-svg-core'
 import {faSignOutAlt} from '@fortawesome/free-solid-svg-icons'
 import connect from "react-redux/es/connect/connect";
 import LoginPage from "./views/login/loginPage";
+import Fatherhood from "./components/fatherhood";
 
 library.add(faSignOutAlt);
 
@@ -25,6 +26,7 @@ class App extends Component {
           <main>
             <Route exact path='/' component={LandingPage}/>
             <Route path="/view1" render={() => userData ? <div>view1</div> : <LoginPage/>}/>
+            <Route path="/laps/isadus"  component={Fatherhood} />
           </main>
           <Footer/>
         </div>
