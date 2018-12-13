@@ -55,7 +55,7 @@ body {
 }
 
 .app {
-  max-width: 100rem;
+  #max-width: 100rem;
   width: 100%;
   padding: 0;
   font-size: 1rem;
@@ -67,6 +67,7 @@ body {
   min-height: 100vh;
   margin: 0 auto;
 }
+
 .app > header,
 .app > main,
 .app > footer {
@@ -76,15 +77,18 @@ body {
 }
 .app > header {
   display: block;
-  #background: gray;
+  background: lightblue;
   text-transform: uppercase;
+  padding: 1rem 2rem;
 }
 .app > main {
   #flex: 1 1 auto;
   #background: #333;
+  width: 100rem;
 }
 .app > footer {
-  background: white;
+  background: lightblue;
+  height: 150px;
 }
 
 .form {
@@ -117,4 +121,8 @@ body {
 
 .rwt__tabpanel  {
   width: 100%;
+}
+
+.navbar-brand {
+  font-family: "Lucida Console", Monaco, monospace;
 }

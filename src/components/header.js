@@ -45,15 +45,11 @@ class Header extends React.Component {
   render() {
     return (
       <header>
-        <Navbar color="light" light expand="md">
+        <Navbar light expand="md">
           <NavbarBrand href="/">MINUSÜNDMUS.EE</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
-              <NavItem>
-                <NavLink href="/view1/">View1</NavLink>
-              </NavItem>
-
               <UncontrolledDropdown
                 nav
                 inNavbar

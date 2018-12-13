@@ -4,6 +4,7 @@ import Fatherhood from "./fatherhood";
 import 'react-web-tabs/dist/react-web-tabs.css';
 import api from "../api";
 import connect from "react-redux/es/connect/connect";
+import BenefitsPage from "../views/child/benefitsPage";
 
 class LandingPage extends Component {
 
@@ -29,6 +30,10 @@ class LandingPage extends Component {
           return "Kinnita isadus";
         case "SET_NAME":
           return "Kinnita nimi";
+        case "APPLY_KINDERGARTEN":
+          return "Valige lasteaiakoht";
+        case "APPLY_SUPPORT":
+          return "Valige toetused";
         default:
           return "Tab " + index;
       }
@@ -40,7 +45,12 @@ class LandingPage extends Component {
           return "Teil on kinnitamata lapse isa.";
         case "SET_NAME":
           return "Teil on võimalik lisada lapse nimi.";
+        case "APPLY_SUPPORT":
+          return "Valige toetused";
+        case "APPLY_KINDERGARTEN":
+          return "Teil on võimalik valida lasteaiakoht.";
         default:
+          console.log(item);
           return "Teil on tegemata toiminguid.";
       }
     };
@@ -50,9 +60,8 @@ class LandingPage extends Component {
       <div className="form" style={{display: this.state.availableSteps.length > 0 ? "" : "none"}}>
 
         <div className="form-row">
-          {this.state.availableSteps.map(asd =>
-            <div className="form-group col-md-12"><div className="alert alert-warning fade show">{getWarningMessage(asd)}</div></div>)}
-
+          {this.state.availableSteps.map((item, index) =>
+            <div key={index} className="form-group col-md-12"><div className="alert alert-warning fade show">{getWarningMessage(item)}</div></div>)}
         </div>
 
         <Tabs defaultTab="tab-0" vertical>
@@ -67,6 +76,12 @@ class LandingPage extends Component {
               </span>
               <span style={{display: item === "SET_NAME" ? "block" : "none"}}>
                 set name
+              </span>
+              <span style={{display: item === "APPLY_GINDERGARTEN" ? "block" : "none"}}>
+                lastead
+              </span>
+              <span style={{display: item === "APPLY_SUPPORT" ? "block" : "none"}}>
+                <BenefitsPage/>
               </span>
             </TabPanel>)}
         </Tabs>

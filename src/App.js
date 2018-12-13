@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import './App.css';
 import './Login.css';
-import {Router, Route} from 'react-router';
+import {Route, Router} from 'react-router';
 import history from './utils/history';
 import Header from './components/header';
 import Footer from './components/footer';
 import LandingPage from './components/landingpage';
 import {library} from '@fortawesome/fontawesome-svg-core';
-import {faSignOutAlt, faChild, faMale} from '@fortawesome/free-solid-svg-icons';
+import {faChild, faMale, faSignOutAlt} from '@fortawesome/free-solid-svg-icons';
 import connect from 'react-redux/es/connect/connect';
 import LoginPage from './views/login/loginPage';
 import Fatherhood from './components/fatherhood';
@@ -36,7 +36,6 @@ class App extends Component {
           <ToastMessage />
           <main style={{flex: "1 1 auto"}}>
             <Route exact path="/" component={LandingPage} />
-            <Route path="/view1" render={() => <div>view1</div>} />
             <Route path="/laps/isadus" component={Fatherhood} />
             <Route path="/laps/toetused" component={BenefitsPage} />
           </main>

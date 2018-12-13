@@ -208,6 +208,6 @@ LEVEL 4. SETTINGS
 */
 
 .field{
-    --fieldBorderColor: #D1C4E9;
-    --fieldBorderColorActive: #673AB7;
+    --fieldBorderColor: darkgray;
+    --fieldBorderColorActive: #7f7f7f;
 }

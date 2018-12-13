@@ -35,7 +35,6 @@ class LoginForm extends Component {
             <span className="a-field__label">Telefoni number</span>
             </span>
               </label>
-
             </FormGroup>
           )}
           <Button
