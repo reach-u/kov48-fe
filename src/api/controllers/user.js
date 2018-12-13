@@ -1,8 +1,7 @@
-//import api from '../api';
+import api from '../api';
 
-//mockime praegu apit
 const user = {
-  getUserInfo: () => Promise.resolve({userName: 'userVello'}),
+  login: (code, phone) => api.get(`localhost:8080/api/1/login/${code}/${phone}`),
 };
 
 export default user;
