@@ -33,7 +33,6 @@ class Fatherhood extends Component {
   }
 
   render() {
-    console.log(this.props.userData);
     return (
       <div>
         <form className="form">

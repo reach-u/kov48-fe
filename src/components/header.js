@@ -13,8 +13,9 @@ import {
   DropdownMenu,
   DropdownItem,
 } from 'reactstrap';
+import connect from "react-redux/es/connect/connect";
 
-export default class Header extends React.Component {
+class Header extends React.Component {
   constructor(props) {
     super(props);
 
@@ -23,12 +24,26 @@ export default class Header extends React.Component {
       isOpen: false,
     };
   }
+
   toggle() {
     this.setState({
       isOpen: !this.state.isOpen,
     });
   }
+
+  getUser() {
+    let userData = this.props && this.props.userData ? this.props.userData : null;
+    console.log(userData);
+    return userData;
+  }
+
+  signOut() {
+    delete localStorage.userToken;
+    window.location.reload();
+  }
+
   render() {
+
     return (
       <header>
         <Navbar color="light" light expand="md">
@@ -39,16 +54,19 @@ export default class Header extends React.Component {
               <NavItem>
                 <NavLink href="/view1/">View1</NavLink>
               </NavItem>
-              <UncontrolledDropdown nav inNavbar>
+
+              <UncontrolledDropdown nav inNavbar style={{display: !!this.props.userData ? "" : "none"}}>
                 <DropdownToggle nav caret>
-                  Options
+                  {this.props.userData ? this.props.userData.firstName + " " + this.props.userData.lastName : ""}
                 </DropdownToggle>
                 <DropdownMenu right>
-                  <DropdownItem>Option 1</DropdownItem>
-                  <DropdownItem>Option 2</DropdownItem>
+                  <DropdownItem>Minu andmed</DropdownItem>
+                  <DropdownItem>Teavituste seadistamine</DropdownItem>
+                  <DropdownItem>Teavituste seadistamine</DropdownItem>
+                  <DropdownItem>Postkast</DropdownItem>
                   <DropdownItem divider />
-                  <DropdownItem>
-                    Log out&nbsp;&nbsp;
+                  <DropdownItem onClick={this.signOut}>
+                    Välju&nbsp;&nbsp;
                     <FontAwesomeIcon icon="sign-out-alt" />
                   </DropdownItem>
                 </DropdownMenu>
@@ -60,3 +78,10 @@ export default class Header extends React.Component {
     );
   }
 }
+
+export default connect(
+  state => ({
+    userData: state.appUser.userData,
+  }),
+  null
+)(Header);
