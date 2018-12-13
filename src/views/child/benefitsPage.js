@@ -48,13 +48,14 @@ class BenefitsPage extends Component {
       const {benefits, checked} = this.state;
     return (
       <div>
-        <h1>Toetused</h1>
-        <hr />
+        <div className="form-row">
+          <h5>Toetused</h5>
+        </div>
+        <hr className="featurette-divider" />
+
         <div>
-          <h3>Taotlen järgnevaid toetusi</h3>
             <BenefitsSelection benefits={benefits} onChange={this.onChange}/>
         </div>
-        <hr />
 
         <hr />
           { father && <PersonData person={father} label={    <h3>Taotleja andmed</h3>}/>}

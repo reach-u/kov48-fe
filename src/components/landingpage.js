@@ -20,6 +20,10 @@ class LandingPage extends Component {
           return "Kinnita isadus";
         case "SET_NAME":
           return "Kinnita nimi";
+        case "APPLY_KINDERGARTEN":
+          return "Valige lasteaiakoht";
+        case "APPLY_SUPPORT":
+          return "Valige toetused";
         default:
           return "Tab " + index;
       }
@@ -31,7 +35,12 @@ class LandingPage extends Component {
           return "Teil on kinnitamata lapse isa.";
         case "SET_NAME":
           return "Teil on võimalik lisada lapse nimi.";
+        case "APPLY_SUPPORT":
+          return "Valige toetused";
+        case "APPLY_KINDERGARTEN":
+          return "Teil on võimalik valida lasteaiakoht.";
         default:
+          console.log(item);
           return "Teil on tegemata toiminguid.";
       }
     };
@@ -60,6 +69,12 @@ class LandingPage extends Component {
               </span>
               <span style={{display: item === "SET_NAME" ? "block" : "none"}}>
                 set name
+              </span>
+              <span style={{display: item === "APPLY_GINDERGARTEN" ? "block" : "none"}}>
+                lastead
+              </span>
+              <span style={{display: item === "APPLY_SUPPORT" ? "block" : "none"}}>
+                <BenefitsPage/>
               </span>
             </TabPanel>)}
         </Tabs>
