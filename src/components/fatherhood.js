@@ -1,22 +1,27 @@
 import React, {Component} from 'react';
 import connect from 'react-redux/es/connect/connect';
 import {fetchChildData} from '../store/actions/childData';
+import Redirect from 'react-router/es/Redirect';
 
 class Fatherhood extends Component {
   state = {
-    child: null,
+    returnToRoot: false,
   };
-
   componentDidMount() {
     this.props.fetchChildData();
   }
 
-  cancelChild() {}
+  cancelChild = () => {
+    this.setState({returnToRoot: true});
+  };
 
   render() {
     const {userData: father, child} = this.props;
+    const {returnToRoot} = this.state;
 
-    return (
+    return returnToRoot ? (
+      <Redirect to="/" />
+    ) : (
       <div>
         <form className="form">
           <div className="form-row">
