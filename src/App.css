@@ -99,3 +99,18 @@ body {
   padding-left: 10px;
   text-transform: uppercase;
 }
+
+.confirm-text {
+  display: block !important;
+  text-align: center !important;
+  padding: 15px !important;
+  color: #7f7d7d !important;
+}
+
+.text-align-right {
+  text-align: right;
+}
+
+.text-align-left {
+  text-align: left;
+}

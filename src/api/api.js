@@ -28,6 +28,7 @@ const api = {
       {
         method: 'get',
         headers: headers,
+
       },
       options || {}
     );
