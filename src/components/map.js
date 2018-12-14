@@ -24,11 +24,11 @@ class Map extends Component {
     viewport: {
       width: 100,
       height: 100,
-      latitude: 58.75,
-      longitude: 25.0,
+      latitude: 58.383,
+      longitude: 26.714,
       pitch: 0,
       bearing: 0,
-      zoom: 7,
+      zoom: 14,
     },
     tooltipInfo: null,
   };
