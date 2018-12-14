@@ -8,9 +8,13 @@ const BenefitsSelection = ({benefits, onChange}) => {
     <div>
       {sortedBenefits.map((benefit, ix) =>
         <div key={ix} className="form-row">
-          <div className="form-group col-md-6 text-align-right">{benefit.type}</div>
-          {benefit.status === "Esitamata" ? <Slider name={benefit} onChange={onChange} checked={benefit.selected}/> :
-            <div className="form-group col-md-6 text-align-left">{benefit.status}</div>
+          <div className="form-group col text-align-right">{benefit.type}</div>
+          <div className="form-group  col text-align-center">{benefit.amount+ " EUR"}</div>
+
+          {benefit.status === "Esitamata" ? <div               className="form-group col text-align-left"
+              ><Slider
+                  name={benefit} onChange={onChange} checked={benefit.selected}/> </div>:
+            <div className="form-group col text-align-left">{benefit.status}</div>
           }
         </div>
       )}
