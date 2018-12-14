@@ -78,7 +78,7 @@ class KinderGarten extends  Component {
                       <th></th>
                       <th>Kaugus</th>
                       <th>Kohti</th>
-                      <th>Järjekorra nr.</th>
+                      <th>Järjekorras</th>
                     </tr>
                     <tr>
                       <th></th>
