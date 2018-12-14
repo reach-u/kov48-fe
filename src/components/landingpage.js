@@ -5,6 +5,7 @@ import 'react-web-tabs/dist/react-web-tabs.css';
 import connect from "react-redux/es/connect/connect";
 import {fetchStepsData} from "../store/actions/availableSteps";
 import BenefitsPage from '../views/child/benefitsPage';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 class LandingPage extends Component {
 
   componentDidMount() {
@@ -53,7 +54,7 @@ class LandingPage extends Component {
 
         <div className="form-row">
           {steps.map((item, index) =>
-            <div key={index} className="form-group col-md-12"><div className="alert alert-warning fade show">{getWarningMessage(item)}</div></div>)}
+            <div key={index} className="form-group col-md-12"><div className="alert alert-warning fade show"><FontAwesomeIcon icon="exclamation-triangle" />&nbsp;&nbsp;{getWarningMessage(item)}</div></div>)}
 
         </div>
 

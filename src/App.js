@@ -7,7 +7,7 @@ import Header from './components/header';
 import Footer from './components/footer';
 import LandingPage from './components/landingpage';
 import {library} from '@fortawesome/fontawesome-svg-core';
-import {faChild, faMale, faSignOutAlt} from '@fortawesome/free-solid-svg-icons';
+import {faChild, faMale, faSignOutAlt, faExclamationTriangle} from '@fortawesome/free-solid-svg-icons';
 import connect from 'react-redux/es/connect/connect';
 import LoginPage from './views/login/loginPage';
 import Fatherhood from './components/fatherhood';
@@ -19,6 +19,7 @@ import BenefitsPage from './views/child/benefitsPage';
 library.add(faSignOutAlt);
 library.add(faChild);
 library.add(faMale);
+library.add(faExclamationTriangle);
 
 class App extends Component {
   componentDidMount() {
