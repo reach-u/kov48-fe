@@ -5,7 +5,7 @@ const PersonData = ({label, person}) => {
       person ?
     <div>
       <div className="form-row">
-          {label}
+          <h5>{label}</h5>
       </div>
       <hr className="featurette-divider" />
       <div className="form-row">

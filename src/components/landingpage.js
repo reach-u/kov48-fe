@@ -6,6 +6,8 @@ import connect from "react-redux/es/connect/connect";
 import {fetchStepsData} from "../store/actions/availableSteps";
 import BenefitsPage from '../views/child/benefitsPage';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import Overview from '../components/overview';
+
 class LandingPage extends Component {
 
   componentDidMount() {
@@ -25,6 +27,8 @@ class LandingPage extends Component {
           return "Valige lasteaiakoht";
         case "APPLY_SUPPORT":
           return "Valige toetused";
+          case "OVERVIEW":
+          return "Ülevaade";
         default:
           return "Tab " + index;
       }
@@ -41,21 +45,22 @@ class LandingPage extends Component {
         case "APPLY_KINDERGARTEN":
           return "Teil on võimalik valida lasteaiakoht.";
         default:
-          console.log(item);
           return "Teil on tegemata toiminguid.";
       }
     };
-    const {steps} =this.props;
+    let {steps} = this.props;
+
+    if(steps.indexOf("OVERVIEW") === -1) {
+      steps.unshift("OVERVIEW");
+    }
 
     return (
-
 
       <div className="form" style={{display: steps.length > 0 ? "" : "none"}}>
 
         <div className="form-row">
           {steps.map((item, index) =>
-            <div key={index} className="form-group col-md-12"><div className="alert alert-warning fade show"><FontAwesomeIcon icon="exclamation-triangle" />&nbsp;&nbsp;{getWarningMessage(item)}</div></div>)}
-
+            <div style={{display: item === "OVERVIEW" ? "none" : ""}} key={index} className="form-group col-md-12"><div className="alert alert-warning fade show"><FontAwesomeIcon icon="exclamation-triangle" />&nbsp;&nbsp;{getWarningMessage(item)}</div></div>)}
         </div>
 
         <Tabs defaultTab="tab-0" vertical>
@@ -76,6 +81,9 @@ class LandingPage extends Component {
               </span>
               <span style={{display: item === "APPLY_SUPPORT" ? "block" : "none"}}>
                 <BenefitsPage/>
+              </span>
+              <span style={{display: item === "OVERVIEW" ? "block" : "none"}}>
+                <Overview/>
               </span>
             </TabPanel>)}
         </Tabs>
