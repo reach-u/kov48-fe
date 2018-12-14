@@ -74,7 +74,7 @@ class KinderGarten extends  Component {
 
                     </tr>
                     <tr>
-                      <td>Siia tuleb aadress</td>
+                      <td>{g.address}</td>
                     </tr>
                   </table>
                 </button>)
