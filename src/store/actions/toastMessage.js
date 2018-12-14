@@ -13,12 +13,12 @@ export const setToast = (data, feature) => ({
 });
 export const setToastError = (data, feature) => ({
 
-  /**
+
   type: `${feature} ${SET_TOAST_ERROR}`,
   payload: {...data, type: 'danger'},
   meta: {feature},
 
-  **/
+
 });
 export const setToastSuccess = (data, feature) => ({
   type: `${feature} ${SET_TOAST_SUCCESS}`,
