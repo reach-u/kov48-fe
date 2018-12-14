@@ -76,8 +76,8 @@ class Map extends Component {
           onViewportChange={this.onViewportChange}
           mapboxApiAccessToken="pk.eyJ1IjoidGVldGphZ29tYWdpIiwiYSI6ImNqYXRibHVwbjVvNW0yd3E4Y3B4a3VpeGcifQ.5oMSO4PmSFVDqiu6elj0QQ"
           mapStyle="mapbox://styles/mapbox/light-v9"
-          width={900}
-          height={400}
+          width={885}
+          height={745}
           maxPitch={0}>
           {data.map((item, idx) => (
             <Marker latitude={item.lat} longitude={item.lon}>

@@ -61,7 +61,9 @@ class LandingPage extends Component {
 
         <div className="form-row">
           {steps.map((item, index) =>
-            <div style={{display: item === "OVERVIEW" ? "none" : ""}} key={index} className="form-group col-md-12"><div className="alert alert-warning fade show"><FontAwesomeIcon icon="exclamation-triangle" />&nbsp;&nbsp;{getWarningMessage(item)}</div></div>)}
+            <div style={{display: item === "OVERVIEW" ? "none" : "", marginBottom: "0px"}}
+                 key={index}
+                 className="form-group col-md-12"><div className="alert alert-warning fade show"><FontAwesomeIcon icon="exclamation-triangle" />&nbsp;&nbsp;{getWarningMessage(item)}</div></div>)}
         </div>
 
         <Tabs defaultTab="tab-0" vertical>
