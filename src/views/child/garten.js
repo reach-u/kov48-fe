@@ -67,11 +67,24 @@ class KinderGarten extends  Component {
                   onClick={this.selectKg.bind(this)}>
                   <table >
                     <tr>
-                      <th>{g.name}</th>
-                      <th>{g.distance}</th>
+                      <th><h5 style={{
+                        marginBottom: "0px", textDecoration: "underline", textAlign: "left",
+                        paddingLeft: "15px", paddingTop: "16px"}}>{g.name}</h5></th>
+                      <th></th>
+                      <th></th>
+                      <th></th>
+                    </tr>
+                    <tr>
+                      <th></th>
+                      <th>Kaugus</th>
+                      <th>Kohti</th>
+                      <th>Järjekorra nr.</th>
+                    </tr>
+                    <tr>
+                      <th></th>
+                      <th>{g.distance}m</th>
                       <th>{g.capacity}</th>
                       <th>{g.waiting}</th>
-
                     </tr>
                     <tr>
                       <td>{g.address}</td>
@@ -89,7 +102,7 @@ class KinderGarten extends  Component {
 
         </div>
 
-        <div id={'buttons'} className="form-row">
+        <div id={'buttons'} className="form-row" style={{marginTop: "20px"}}>
           <div className="form-group col-md-6">
             <button className="btn btn-outline-danger" onClick={()=>window.location.reload()}>Loobun</button>
           </div>

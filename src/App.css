@@ -261,6 +261,9 @@ footer p { font-size:13px; color:black; padding-bottom:0px; margin-bottom:8px;}
 }
 
 .kk-selection-item {
-  width: 240px;
+  width: 450px;
   margin-bottom: 8px;
+}
+.kk-selection-item table {
+  width: 100%;
 }
