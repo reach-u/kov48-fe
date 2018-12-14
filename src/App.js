@@ -16,6 +16,7 @@ import {fetchUserInfo} from './store/actions/appUser';
 import ToastMessage from './components/toastMessage';
 import Overview from './components/overview';
 import BenefitsPage from './views/child/benefitsPage';
+import KinderGarten from './views/child/garten';
 
 library.add(faSignOutAlt);
 library.add(faChild);
@@ -43,6 +44,7 @@ class App extends Component {
             <Route path="/laps/isadus" component={Fatherhood} />
             <Route path="/laps/toetused" component={BenefitsPage} />
             <Route path="/overview" component={Overview} />
+            <Route path="/laps/lasteaed" component={KinderGarten} />
           </main>
           <Footer />
         </div>

@@ -7,6 +7,7 @@ import apiKey from './reducers/apiKey';
 import childData from './reducers/childData';
 import benefits from './reducers/benefitsAvailable';
 import availableSteps from './reducers/availableSteps';
+import garten from './reducers/garten';
 
 const rootReducer = combineReducers({
   toastMessage,
@@ -15,7 +16,8 @@ const rootReducer = combineReducers({
   apiKey,
   childData,
   benefits,
-  availableSteps
+  availableSteps,
+  garten
 });
 
 /**

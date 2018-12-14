@@ -7,6 +7,7 @@ import {fetchStepsData} from "../store/actions/availableSteps";
 import BenefitsPage from '../views/child/benefitsPage';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Overview from '../components/overview';
+import KinderGarten from "../views/child/garten";
 
 class LandingPage extends Component {
 
@@ -76,8 +77,8 @@ class LandingPage extends Component {
               <span style={{display: item === "SET_NAME" ? "block" : "none"}}>
                 set name
               </span>
-              <span style={{display: item === "APPLY_GINDERGARTEN" ? "block" : "none"}}>
-                lastead
+              <span style={{display: item === "APPLY_KINDERGARTEN" ? "block" : "none"}}>
+                <KinderGarten/>
               </span>
               <span style={{display: item === "APPLY_SUPPORT" ? "block" : "none"}}>
                 <BenefitsPage/>
