@@ -8,6 +8,7 @@ import childData from './reducers/childData';
 import benefits from './reducers/benefitsAvailable';
 import availableSteps from './reducers/availableSteps';
 import garten from './reducers/garten';
+import school from './reducers/school';
 
 const rootReducer = combineReducers({
   toastMessage,
@@ -17,7 +18,8 @@ const rootReducer = combineReducers({
   childData,
   benefits,
   availableSteps,
-  garten
+  garten,
+  school,
 });
 
 /**

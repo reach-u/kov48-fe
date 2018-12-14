@@ -4,6 +4,9 @@ import {fetchChildData} from "../../store/actions/childData";
 import {setToastError, setToastSuccess} from "../../store/actions/toastMessage";
 import {fetchAvailableGartens} from "../../store/actions/garten";
 import Map from "../../components/map";
+import {setSchool} from "../../store/actions/school";
+import store from '../../store';
+
 
 
 class KinderGarten extends  Component {
@@ -28,6 +31,9 @@ class KinderGarten extends  Component {
     onSubmit = () => {
         const name = (this.state.gartens.find(g=>g.id===this.state.selectedIx)).name;
         this.props.setToastSuccess({message:"Valisite lasteaia "+name}, 'garten');
+
+        store.dispatch(setSchool(name, 'garten'));
+
 
     };
 

@@ -18,7 +18,7 @@ class Overview extends Component {
   }
 
   render() {
-    const {benefits, child} = this.props;
+    const {benefits, child, school} = this.props;
 
     return (
       <div>
@@ -53,7 +53,7 @@ class Overview extends Component {
           </div>
           <div className="form-row">
             <div className="form-group col-md-3 text-align-right">Lasteaed</div>
-            <div className="form-group col-md-3 text-align-left">-</div>
+            <div className="form-group col-md-3 text-align-left">{school}</div>
             <div className="form-group col-md-3 text-align-left"></div>
             <div className="form-group col-md-1 text-align-left cst-brdr"></div>
             <div className="form-group col-md-2 text-align-left"></div>
@@ -93,6 +93,7 @@ export default connect(
     userData: state.appUser.userData,
     child: state.childData.childData,
     benefits: state.benefits,
+    school:state.school,
   }),
   {fetchChildData, setToastSuccess, setToastError, fetchStepsData, fetchBenefitsData}
 )(Overview);
