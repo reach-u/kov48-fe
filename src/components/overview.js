@@ -7,12 +7,14 @@ import {setToastError, setToastSuccess} from '../store/actions/toastMessage';
 import PersonData from './personData';
 import {fetchStepsData} from "../store/actions/availableSteps";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {fetchBenefitsData} from "../store/actions/benefitsAvailable";
 
 
 class Overview extends Component {
 
   componentDidMount() {
     this.props.fetchChildData();
+    this.props.fetchBenefitsData();
   }
 
   render() {
@@ -90,7 +92,7 @@ export default connect(
   state => ({
     userData: state.appUser.userData,
     child: state.childData.childData,
-    benefits: state.benefits.benefits,
+    benefits: state.benefits,
   }),
-  {fetchChildData, setToastSuccess, setToastError, fetchStepsData}
+  {fetchChildData, setToastSuccess, setToastError, fetchStepsData, fetchBenefitsData}
 )(Overview);

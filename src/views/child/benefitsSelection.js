@@ -25,11 +25,3 @@ const BenefitsSelection = ({benefits, onChange}) => {
 
 export default BenefitsSelection;
 
-/**
- *   {
-    "type": "Sünnitoetus (KOV)",
-    "amount": 1000,
-    "status": "Makstud",
-    "selected": true
-  },
- **/

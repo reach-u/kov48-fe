@@ -44,7 +44,7 @@ class BenefitsPage extends Component {
 
     onSubmit = () => {
         api.benefits.applyForSupport(this.props.child.idCode, this.state.benefits.filter(b=>(b.selected===true && b.status=="Esitamata")))
-            .then(response =>{this.setState({benefits:response})})
+            .then(response =>{this.setState({benefits:response});this.props.fetchBenefitsData(51800000000)})
     };
 
   render() {
@@ -120,7 +120,7 @@ export default connect(
     state => ({
         father: state.appUser.userData,
         child: state.childData.childData,
-        benefits: state.benefits.benefits,
+        benefits: state.benefits,
     }),
     {fetchBenefitsData, fetchChildData, setToastSuccess, setToastError}
 )(BenefitsPage);
