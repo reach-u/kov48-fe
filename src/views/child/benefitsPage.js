@@ -104,7 +104,7 @@ class BenefitsPage extends Component {
 
         <div className="form-row">
           <div className="form-group col-md-6 ">
-            <button className="btn btn-outline-danger">Katkestan</button>
+            <button className="btn btn-outline-danger" onClick={()=>window.location.reload()}>Katkestan</button>
           </div>
           <div className="form-group col-md-6 ">
             <button className="btn btn-outline-success" style={{marginLeft: "10px"}} disabled={!checked} onClick={() => this.onSubmit()}>Esitan</button>

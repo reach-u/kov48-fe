@@ -76,7 +76,7 @@ class KinderGarten extends  Component {
 
                 <div id={'buttons'}>
 
-                   <button>Loobun</button>
+                   <button onClick={()=>window.location.reload()}>Loobun</button>
                    <button onClick={()=>this.onSubmit()}>Kinnitan</button>
 
 
