@@ -267,3 +267,18 @@ footer p { font-size:13px; color:black; padding-bottom:0px; margin-bottom:8px;}
 .kk-selection-item table {
   width: 100%;
 }
+
+#mapDiv {
+  margin: 3px;
+  border: solid 2px #79663b;
+  height: inherit;
+  width: inherit;
+}
+
+.mapboxgl-canvas {
+  left: 0;
+}
+
+#map {
+  margin:15px;
+}

@@ -96,7 +96,7 @@ class KinderGarten extends  Component {
 
           </div>
           { !!gartens.length &&
-          <div id={'map-wrapper'}  style={{height:"300px", width:"80%" }}>
+          <div id={'map-wrapper'}  style={{height:"300px", width:"900px" }}>
             <Map data={gartens.map(g=>g.crd)} />
           </div>}
 
