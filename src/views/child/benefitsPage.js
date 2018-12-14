@@ -44,6 +44,7 @@ class BenefitsPage extends Component {
 
     onSubmit = () => {
         api.benefits.applyForSupport(this.props.child.idCode, this.state.benefits.filter(b=>(b.selected===true && b.status=="Esitamata")))
+            .then(response =>{this.setState({benefits:response})})
     };
 
   render() {
