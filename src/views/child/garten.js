@@ -3,17 +3,36 @@ import connect from "react-redux/es/connect/connect";
 import {fetchChildData} from "../../store/actions/childData";
 import {setToastError, setToastSuccess} from "../../store/actions/toastMessage";
 import {fetchAvailableGartens} from "../../store/actions/garten";
+import Map from "../../components/map";
 
 
 class KinderGarten extends  Component {
+
+    state = {
+        gartens: [],
+        selectedIx:null,
+    };
 
     componentDidMount() {
         this.props.fetchAvailableGartens();
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(this.props.gartens.length && !prevState.gartens.length){
+            this.setState({gartens:this.props.gartens.map((g,ix)=>{
+                g.id=ix;return g;
+            })});
+        }
+    }
+
+    onSubmit = () => {
+        const name = (this.state.gartens.find(g=>g.id===this.state.selectedIx)).name;
+        this.props.setToastSuccess({message:"Valisite lasteaia "+name}, 'garten');
+
+    };
 
     render(){
-        const {gartens} = this.props;
+        const {gartens} = this.state;
         return(
             <div>
 
@@ -30,7 +49,7 @@ class KinderGarten extends  Component {
                         <hr className="featurette-divider"/>
                         {gartens.map(g=> {
                             return (
-                            <button style={{display:'block'}}>
+                            <button style={{display:'block'}} onClick={()=>this.setState({selectedIx:g.id})}>
                                 <table >
                                     <tr>
                                         <th>{g.name}</th>
@@ -48,17 +67,17 @@ class KinderGarten extends  Component {
                         })}
 
                     </div>
-                    <div id={'gartenMap'} style={{height:"300px", width:"80%", backgroundColor: 'yellow', }}>
-
-
-                    </div>
+                    { !!gartens.length &&
+                    <div id={'map-wrapper'}  style={{height:"300px", width:"80%" }}>
+                        <Map data={gartens.map(g=>g.crd)} />
+                    </div>}
 
                 </div>
 
                 <div id={'buttons'}>
 
                    <button>Loobun</button>
-                   <button>Kinnitan</button>
+                   <button onClick={()=>this.onSubmit()}>Kinnitan</button>
 
 
                     </div>
