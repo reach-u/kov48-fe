@@ -14,7 +14,7 @@ class Overview extends Component {
 
   componentDidMount() {
     this.props.fetchChildData();
-    this.props.fetchBenefitsData();
+    this.props.fetchBenefitsData(51800000000);
   }
 
   render() {
