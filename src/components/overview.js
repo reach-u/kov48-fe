@@ -71,7 +71,7 @@ class Overview extends Component {
 
         {benefits.map(b=>
           <div className="form-row">
-            <div className="form-group col-md-3 text-align-left">{b.type})</div>
+            <div className="form-group col-md-3 text-align-left">{b.type}</div>
             <div className="form-group col-md-1 text-align-left cst-brdr">{b.amount}</div>
             <div className="form-group col-md-2 text-align-left">
               {(b.status==="Makstud")? <button className="btn btn-outline-success">Makstud&nbsp;<FontAwesomeIcon icon="check" /></button>:
